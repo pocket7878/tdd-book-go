@@ -16,3 +16,12 @@ func TestMultiplication(t *testing.T) {
 		t.Fatalf("Expected 15, got %d", product.Amount())
 	}
 }
+
+func TestEquality(t *testing.T) {
+	five := NewDollar(5)
+	fiveB := NewDollar(5)
+
+	if *five != *fiveB {
+		t.Fatalf("Expected true, got false")
+	}
+}
