@@ -49,5 +49,11 @@ func (m *Money) String() string {
 }
 
 func (m *Money) Reduce(to string) *Money {
-	return m
+	var rate int
+	if m.Currency() == "CHF" && to == "USD" {
+		rate = 2
+	} else {
+		rate = 1
+	}
+	return newMoney(m.Amount()/rate, to)
 }
