@@ -26,6 +26,10 @@ func (m *Money) Name() string {
 	return m.name
 }
 
+func (m *Money) Times(multiplier int) *Money {
+	return &Money{m.amount * multiplier, m.name}
+}
+
 func (m *Money) Equals(other moneyEqualable) bool {
 	return m.Name() == other.Name() && m.amount == other.Amount()
 }
