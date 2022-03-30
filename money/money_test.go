@@ -33,3 +33,11 @@ func TestCurrency(t *testing.T) {
 	assert.Equal(t, "USD", NewDollar(1).Currency())
 	assert.Equal(t, "CHF", NewFranc(1).Currency())
 }
+
+func TestSimpleAddition(t *testing.T) {
+	five := NewDollar(5)
+	sum := five.Plus(five)
+	bank := NewBank()
+	reduced := bank.Reduce(sum, "USD")
+	assert.True(t, NewDollar(10).Equals(reduced))
+}
