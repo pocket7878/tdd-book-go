@@ -1,5 +1,5 @@
 package money
 
 func NewDollar(amount int) *Money {
-	return &Money{amount, "Dollar"}
+	return newMoney(amount, "USD")
 }
