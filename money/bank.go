@@ -8,5 +8,10 @@ func NewBank() *Bank {
 }
 
 func (b *Bank) Reduce(source Expression, to string) *Money {
-	return NewDollar(10)
+	sum, ok := source.(*Sum)
+	if !ok {
+		panic("Expression is not a Sum")
+	}
+	amount := sum.augend.Amount() + sum.addend.Amount()
+	return newMoney(amount, to)
 }

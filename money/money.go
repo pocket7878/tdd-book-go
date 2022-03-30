@@ -37,7 +37,7 @@ func (m *Money) Times(multiplier int) *Money {
 }
 
 func (m *Money) Plus(added *Money) Expression {
-	return newMoney(m.Amount()+added.Amount(), m.Currency())
+	return NewSum(m, added)
 }
 
 func (m *Money) Equals(other moneyEqualable) bool {
