@@ -47,3 +47,7 @@ func (m *Money) Equals(other moneyEqualable) bool {
 func (m *Money) String() string {
 	return fmt.Sprintf("%d %s", m.Amount(), m.Currency())
 }
+
+func (m *Money) Reduce(to string) *Money {
+	return m
+}
