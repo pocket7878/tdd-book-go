@@ -16,3 +16,8 @@ func (s *Sum) Augend() *Money {
 func (s *Sum) Addend() *Money {
 	return s.addend
 }
+
+func (s *Sum) Reduce(to string) *Money {
+	amount := s.augend.Amount() + s.addend.Amount()
+	return newMoney(amount, to)
+}

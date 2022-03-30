@@ -12,6 +12,5 @@ func (b *Bank) Reduce(source Expression, to string) *Money {
 	if !ok {
 		panic("Expression is not a Sum")
 	}
-	amount := sum.augend.Amount() + sum.addend.Amount()
-	return newMoney(amount, to)
+	return sum.Reduce(to)
 }
