@@ -1,17 +1,13 @@
 package money
 
 type Franc struct {
-	amount int
+	Money
 }
 
 func NewFranc(amount int) *Franc {
-	return &Franc{amount}
+	return &Franc{Money{amount}}
 }
 
 func (d *Franc) Times(multiplier int) *Franc {
 	return NewFranc(d.amount * multiplier)
-}
-
-func (d *Franc) Amount() int {
-	return d.amount
 }
