@@ -48,12 +48,7 @@ func (m *Money) String() string {
 	return fmt.Sprintf("%d %s", m.Amount(), m.Currency())
 }
 
-func (m *Money) Reduce(to string) *Money {
-	var rate int
-	if m.Currency() == "CHF" && to == "USD" {
-		rate = 2
-	} else {
-		rate = 1
-	}
+func (m *Money) Reduce(bank *Bank, to string) *Money {
+	rate := bank.Rate(m.Currency(), to)
 	return newMoney(m.Amount()/rate, to)
 }
