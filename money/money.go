@@ -1,5 +1,7 @@
 package money
 
+import "fmt"
+
 type Money struct {
 	amount   int
 	currency string
@@ -36,4 +38,8 @@ func (m *Money) Times(multiplier int) *Money {
 
 func (m *Money) Equals(other moneyEqualable) bool {
 	return m.Currency() == other.Currency() && m.Amount() == other.Amount()
+}
+
+func (m *Money) String() string {
+	return fmt.Sprintf("%d %s", m.Amount(), m.Currency())
 }
