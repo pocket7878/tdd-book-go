@@ -2,39 +2,23 @@ package money
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestMultiplication(t *testing.T) {
 	five := NewDollar(5)
-	product := five.Times(2)
-	if !product.Equals(NewDollar(10)) {
-		t.Fatalf("Expected 10, got %d", product.Amount())
-	}
-
-	product = five.Times(3)
-	if !product.Equals(NewDollar(15)) {
-		t.Fatalf("Expected 15, got %d", product.Amount())
-	}
+	assert.True(t, five.Times(2).Equals(NewDollar(10)))
+	assert.True(t, five.Times(3).Equals(NewDollar(15)))
 }
 
 func TestEquality(t *testing.T) {
-	five := NewDollar(5)
-	fiveB := NewDollar(5)
-
-	if !five.Equals(fiveB) {
-		t.Fatalf("Expected true, got false")
-	}
+	assert.True(t, NewDollar(5).Equals(NewDollar(5)))
+	assert.True(t, NewFranc(5).Equals(NewFranc(5)))
 }
 
 func TestFrancMultiplication(t *testing.T) {
 	five := NewFranc(5)
-	product := five.Times(2)
-	if !product.Equals(NewFranc(10)) {
-		t.Fatalf("Expected 10, got %d", product.Amount())
-	}
-
-	product = five.Times(3)
-	if !product.Equals(NewFranc(15)) {
-		t.Fatalf("Expected 15, got %d", product.Amount())
-	}
+	assert.True(t, five.Times(2).Equals(NewFranc(10)))
+	assert.True(t, five.Times(3).Equals(NewFranc(15)))
 }
