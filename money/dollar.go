@@ -9,9 +9,7 @@ func NewDollar(amount int) *Dollar {
 }
 
 func (d *Dollar) Times(multiplier int) *Dollar {
-	d.amount *= multiplier
-
-	return nil
+	return NewDollar(d.amount * multiplier)
 }
 
 func (d *Dollar) Amount() int {
