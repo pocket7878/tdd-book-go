@@ -32,11 +32,11 @@ func (m *Money) Currency() string {
 	return m.currency
 }
 
-func (m *Money) Times(multiplier int) *Money {
-	return &Money{m.amount * multiplier, m.currency}
+func (m *Money) Times(multiplier int) Expression {
+	return newMoney(m.Amount()*multiplier, m.Currency())
 }
 
-func (m *Money) Plus(added *Money) Expression {
+func (m *Money) Plus(added Expression) Expression {
 	return NewSum(m, added)
 }
 
